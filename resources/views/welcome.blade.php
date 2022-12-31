@@ -21,6 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
+    <p><a href="{{route('viewRole')}}">Permisson</a></p>
         <p><a href="{{route('landingPage')}}">Landing Page</a></p>
         <p><a href="{{route('category')}}">Category</a></p>
         <p><a href="{{route('book')}}">Book</a></p>

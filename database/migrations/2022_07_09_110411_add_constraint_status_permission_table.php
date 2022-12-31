@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRolesIdInUsersTable extends Migration
+class AddConstraintStatusPermissionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class AddRolesIdInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles');
-            
+        //
+        Schema::table('permission', function (Blueprint $table) {
+            \DB::statement('alter table permission add constraint check_status check (status in (0, 1))');
         });
     }
 
@@ -28,8 +26,6 @@ class AddRolesIdInUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }
